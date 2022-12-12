@@ -9,7 +9,7 @@ import Review from './Review';
 
 const Reviews = () => {
     const [user] = useAuthState(auth)
-    const {data:Reviews,isLoading,refetch,isFetching,error}=useQuery('users',()=>fetch('http://localhost:5000/reviews',
+    const {data:Reviews,isLoading,refetch,isFetching,error}=useQuery('users',()=>fetch('https://quick-solution.vercel.app/reviews',
     {
         method: 'GET',
         headers: {

@@ -12,7 +12,7 @@ const UserRaw = ({User,index,refetch }) => {
   const {email,role}=User;
   
   const makeAdmin=()=>{
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://quick-solution.vercel.app/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -42,7 +42,7 @@ const UserRaw = ({User,index,refetch }) => {
 
 
 const handleDeleteUser = (email) => {
-  fetch(`http://localhost:5000/user/${email}`, {
+  fetch(`https://quick-solution.vercel.app/user/${email}`, {
       method: 'DELETE',
       headers: {
         'content-type':'appliction/json',

@@ -6,7 +6,7 @@ import Loading from '../../Loading/Loading';
 import DeleteJobModal from '../MyJobs/DeleteJobModal';
 
 const AllJobs = () => {
-    const {data:Jobs,isLoading,refetch,isFetching,error}=useQuery('users',()=>fetch('http://localhost:5000/jobs',
+    const {data:Jobs,isLoading,refetch,isFetching,error}=useQuery('users',()=>fetch('https://quick-solution.vercel.app/jobs',
     {
         method: 'GET',
         headers: {

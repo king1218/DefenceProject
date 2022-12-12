@@ -20,7 +20,7 @@ const JobDetails = () => {
     const {jobid} = useParams();
 
 
-const {data: jobDetail,isLoading,isFetching} = useQuery(['jobs',jobid], () => fetch(`http://localhost:5000/jobs/${jobid}`)
+const {data: jobDetail,isLoading,isFetching} = useQuery(['jobs',jobid], () => fetch(`https://quick-solution.vercel.app/jobs/${jobid}`)
     .then(res=>res.json())
 )
 
@@ -50,7 +50,7 @@ const applyJob=()=>{
    else{
 
          if(User?.email){
-          fetch(`http://localhost:5000/findjob/${jobid}?email=${User?.email}`,{
+          fetch(`https://quick-solution.vercel.app/findjob/${jobid}?email=${User?.email}`,{
              method:'PUT',
              headers:{
                  'content-type':'application/json'

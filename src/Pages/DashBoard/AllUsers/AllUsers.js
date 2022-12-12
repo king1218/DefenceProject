@@ -5,7 +5,7 @@ import UserRaw from './UserRow';
 
 
 const AllUsers = () => {
-    const {data:Users,isLoading,refetch}=useQuery('users',()=>fetch('http://localhost:5000/users',
+    const {data:Users,isLoading,refetch}=useQuery('users',()=>fetch('https://quick-solution.vercel.app/users',
     {
         method: 'GET',
         headers: {

@@ -34,7 +34,7 @@ const AddCategoryModal = ({refetch}) => {
          
                 // add Category:
   
-                fetch(`http://localhost:5000/category/add`, {
+                fetch(`https://quick-solution.vercel.app/category/add`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json',

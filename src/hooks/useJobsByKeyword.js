@@ -6,7 +6,7 @@ const useJobsByKeyword =(keyword)=>{
     const [jobsLoading,setjobsLoading] = useState(true)
     useEffect(()=>{
         
-            fetch(`http://localhost:5000/findjob?keyword=${keyword}`,{
+            fetch(`https://quick-solution.vercel.app/findjob?keyword=${keyword}`,{
 
             method:'GET',
             headers:{

@@ -12,7 +12,7 @@ import { useQuery } from 'react-query';
 import Loading from "../Loading/Loading"
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import ErrorPage from '../ErrorPage/ErrorPage';
+
 
 
 
@@ -32,7 +32,7 @@ const { register, formState: { errors }, handleSubmit,reset } = useForm();
 
  
 
-const {data: jobs,refetch,isLoading} = useQuery(['jobs',keyword], () => fetch(`http://localhost:5000/findjob?keyword=${keyword}`)
+const {data: jobs,refetch,isLoading} = useQuery(['jobs',keyword], () => fetch(`https://quick-solution.vercel.app/findjob?keyword=${keyword}`)
      .then(res=>res.json())
     
 )
@@ -40,9 +40,7 @@ const {data: jobs,refetch,isLoading} = useQuery(['jobs',keyword], () => fetch(`h
 if(isLoading){
     return <Loading></Loading>
 }
-if(errors){
-  return <ErrorPage error={errors}></ErrorPage>
-}
+
 
 
 const onSubmit = async (data)=>{

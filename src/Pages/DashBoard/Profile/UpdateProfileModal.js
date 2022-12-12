@@ -60,7 +60,7 @@ const UpdateProfileModal = () => {
 
               // Update User
 
-              fetch(`http://localhost:5000/user/${user?.email}`, {
+              fetch(`https://quick-solution.vercel.app/user/${user?.email}`, {
                   method: 'PUT',
                   headers: {
                       'content-type': 'application/json', 

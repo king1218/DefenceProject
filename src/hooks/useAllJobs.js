@@ -5,7 +5,7 @@ const useAllJobs =()=>{
     const [JobsLoading,setJobsLoading] = useState(true)
     useEffect(()=>{
         
-            fetch(`http://localhost:5000/jobs`,{
+            fetch(`https://quick-solution.vercel.app/jobs`,{
 
             method:'GET',
             headers:{

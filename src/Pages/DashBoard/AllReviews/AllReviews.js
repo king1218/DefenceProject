@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 const AllReviews = () => {
     const navigate = useNavigate();
-    const {data:Reviews,isLoading,refetch}=useQuery('reviews',()=>fetch('http://localhost:5000/reviews',
+    const {data:Reviews,isLoading,refetch}=useQuery('reviews',()=>fetch('https://quick-solution.vercel.app/reviews',
     {
         method: 'GET',
         headers: {
@@ -24,7 +24,7 @@ const AllReviews = () => {
 
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://quick-solution.vercel.app/reviews/${id}`, {
             method: 'DELETE',
             headers: {
               'content-type':'appliction/json',

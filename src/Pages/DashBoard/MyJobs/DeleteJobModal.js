@@ -12,7 +12,7 @@ const DeleteJobModal = ({Job,refetch}) => {
     
         const email = user.email;
         const handleDelete = () => {
-            fetch(`http://localhost:5000/myjobs/${email}`, {
+            fetch(`https://quick-solution.vercel.app/myjobs/${email}`, {
                 method: 'DELETE',
                 headers: {
                   'content-type':'appliction/json',

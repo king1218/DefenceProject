@@ -16,7 +16,7 @@ const PostedJobs = () => {
   const navigate = useNavigate();
     const [user] = useAuthState(auth);
    const email = user.email;
-    const {data: Jobs,isLoading,isFetching,refetch} = useQuery(['jobs',email], () => fetch(`http://localhost:5000/myjobs/${email}`,
+    const {data: Jobs,isLoading,isFetching,refetch} = useQuery(['jobs',email], () => fetch(`https://quick-solution.vercel.app/myjobs/${email}`,
     {
       
         method: 'GET',
@@ -41,7 +41,7 @@ if(Jobs.length===0){
 const Cadidates = (Jobid)=>{
 
         
-    fetch(`http://localhost:5000/candidate/${Jobid}`,{
+    fetch(`https://quick-solution.vercel.app/candidate/${Jobid}`,{
 
     method:'GET',
     headers:{
