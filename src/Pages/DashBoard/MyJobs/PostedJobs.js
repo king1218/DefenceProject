@@ -8,15 +8,18 @@ import Loading from '../../Loading/Loading';
 import Candidates from './Candidates';
 import {signOut } from 'firebase/auth';
 
-import DeleteJobModal from './DeleteJobModal';
+
+import { toast } from 'react-toastify';
 
 const PostedJobs = () => {
   const [candidates,SetCandidates] = useState();
+
+
   
   const navigate = useNavigate();
     const [user] = useAuthState(auth);
    const email = user.email;
-    const {data: Jobs,isLoading,isFetching,refetch} = useQuery(['jobs',email], () => fetch(`https://quick-solution.vercel.app/myjobs/${email}`,
+    const {data: Jobs,isLoading,isFetching,refetch} = useQuery(['jobs',email], () => fetch(`https://quick-solution-server.up.railway.app/myjobs/${email}`,
     {
       
         method: 'GET',
@@ -41,7 +44,7 @@ if(Jobs.length===0){
 const Cadidates = (Jobid)=>{
 
         
-    fetch(`https://quick-solution.vercel.app/candidate/${Jobid}`,{
+    fetch(`https://quick-solution-server.up.railway.app/candidate/${Jobid}`,{
 
     method:'GET',
     headers:{
@@ -59,13 +62,38 @@ const Cadidates = (Jobid)=>{
       })
     .then(candidates=>{
         SetCandidates(candidates);
-       
-        
+      
         
     })
 
   
 
+}
+
+const handleDelete = (Jobid) => {
+  fetch(`https://quick-solution-server.up.railway.app/deletejob/${Jobid}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type':'appliction/json',
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+    }
+  })
+      .then(res => 
+        {
+          if(res.status === 401 || res.status===403){
+              signOut(auth);
+              navigate('/')
+          }
+          return res.json()
+      })
+      
+      .then(data => {
+          
+          if (data.deletedCount) {
+              toast.success(`Your job is deleted`)
+              refetch();
+          }
+      })
 }
 
 
@@ -110,14 +138,14 @@ const Cadidates = (Jobid)=>{
         <td>{Job?.Published_On}</td>
         <th>
           
-          <label htmlFor="Delete-Job-Modal" className="btn btn-primary btn-xs">Delete</label>
+          <button onClick={()=>handleDelete(Job?._id)} className="btn btn-primary btn-xs">Delete</button>
           <label onClick={()=>Cadidates(Job?._id)} className="btn btn-primary btn-xs mx-4">Candidates</label>
-          <DeleteJobModal key={Job._id} Job={Job} refetch={refetch}></DeleteJobModal>
+          
           
         </th>
        
       </tr>
-       
+      
       )
       
    }

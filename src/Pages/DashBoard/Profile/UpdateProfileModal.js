@@ -53,14 +53,13 @@ const UpdateProfileModal = () => {
                 Department:data.department,
                 University:data.university,
                 Student_ID:data.studentId,
-               
                 Profile:'Updated'
              
                 }
 
               // Update User
 
-              fetch(`https://quick-solution.vercel.app/user/${user?.email}`, {
+              fetch(`https://quick-solution-server.up.railway.app/user/${user?.email}`, {
                   method: 'PUT',
                   headers: {
                       'content-type': 'application/json', 
@@ -74,7 +73,7 @@ const UpdateProfileModal = () => {
                 console.log(result.result)
                  if(result.result.acknowledged===true){
                   toast.success(`${user.displayName} you have updated your profile!`)
-                  navigate('/findjob')
+                  navigate('/dashboard')
                   
 
                  }
@@ -269,8 +268,8 @@ const UpdateProfileModal = () => {
            
              })}
          >
-         <option disabled selected>Last Education Status</option>
-         <option value="HSC">HSC</option>
+         <option disabled selected>Education Status</option>
+       
          <option value="Diploma">Diploma</option>
          <option value="Batchelor">Batchelor</option>
         

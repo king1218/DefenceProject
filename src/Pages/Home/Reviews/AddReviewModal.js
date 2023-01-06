@@ -23,7 +23,7 @@ const AddReviewModal = ({refetch}) => {
      }
          
                 // add Category:
-               fetch(`https://quick-solution.vercel.app/reviews`, {
+               fetch(`https://quick-solution-server.up.railway.app/reviews`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

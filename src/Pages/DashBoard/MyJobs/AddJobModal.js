@@ -54,7 +54,7 @@ const AddJobModal = ({refetch}) => {
 
                   //Add JOb:
 
-                  fetch('https://quick-solution.vercel.app/jobs', {
+                  fetch('https://quick-solution-server.up.railway.app/jobs', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json', 
@@ -101,8 +101,8 @@ const AddJobModal = ({refetch}) => {
               <div>
               <input
                type="text"
-               placeholder="Name/organization"
-              defaultValue={user?.displayName}
+               placeholder="Name/Organization Name"
+            
                {...register("name", {
                    required: {
                   value: true,
@@ -119,6 +119,7 @@ const AddJobModal = ({refetch}) => {
 
 
               <div>
+              <label className="label font-semibold">Logo</label>
               <input
                type="file"
           
@@ -217,13 +218,16 @@ const AddJobModal = ({refetch}) => {
               
                 })}
             >
-            <option disabled selected>Select Job Category</option>
+            <option disabled selected>Job Category</option>
             <option value="Tutions">Tutions</option>
             <option value="Photography">Photography</option>
             <option value="Delivery">Delivery</option>
             <option value="Projects">Projects</option>
             <option value="Software Fix">Software Fix</option>
             <option value="It Assistant">It Assistant</option>
+            <option value="Call Center">Call Center</option>
+            <option value="Seller">Seller</option>
+            <option value="Volunteer">Volunteer</option>
             <option value="Other">Other</option>
          </select>
              
@@ -248,9 +252,9 @@ const AddJobModal = ({refetch}) => {
               
                 })}
             >
-            <option disabled selected >Select Job Type</option>
-            <option value="full-time">full-time</option>
-            <option value="part-time">part-time</option>
+            <option disabled selected >Job Type</option>
+            <option value="One-time">One-time</option>
+            <option value="Part-time">Part-time</option>
            
             </select>
              
@@ -399,8 +403,7 @@ const AddJobModal = ({refetch}) => {
            
              })}
          >
-         <option disabled selected>Select Educational Requirements</option>
-         <option value="HSC">HSC</option>
+         <option disabled selected>Educational Status</option>
          <option value="Diploma">Diploma</option>
          <option value="Batchelor">Batchelor</option>
         

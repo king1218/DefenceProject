@@ -6,7 +6,7 @@ const useAdmin =user=>{
     useEffect(()=>{
         const email= user?.email;
         if(email){
-            fetch(`https://quick-solution.vercel.app/user/admin/${email}`,{
+            fetch(`https://quick-solution-server.up.railway.app/user/admin/${email}`,{
 
             method:'GET',
             headers:{

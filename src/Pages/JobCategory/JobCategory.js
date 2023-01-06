@@ -27,7 +27,7 @@ const JobCategory = () => {
 
   
 
-  const {data:Categories,isLoading,refetch,error}=useQuery('categories',()=>fetch('https://quick-solution.vercel.app/categories',
+  const {data:Categories,isLoading,refetch,error}=useQuery('categories',()=>fetch('https://quick-solution-server.up.railway.app/categories',
   {
       method: 'GET',
       headers: {

@@ -9,10 +9,10 @@ import { useNavigate } from 'react-router-dom';
 const UserRaw = ({User,index,refetch }) => {
 
   const navigate = useNavigate();
-  const {email,role}=User;
+  const {email,role,photoUrl}=User;
   
   const makeAdmin=()=>{
-    fetch(`https://quick-solution.vercel.app/user/admin/${email}`, {
+    fetch(`https://quick-solution-server.up.railway.app/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -42,7 +42,7 @@ const UserRaw = ({User,index,refetch }) => {
 
 
 const handleDeleteUser = (email) => {
-  fetch(`https://quick-solution.vercel.app/user/${email}`, {
+  fetch(`https://quick-solution-server.up.railway.app/user/${email}`, {
       method: 'DELETE',
       headers: {
         'content-type':'appliction/json',
@@ -70,7 +70,7 @@ const handleDeleteUser = (email) => {
         
              <tr>
                 <th>{index+1}</th>
-                <td>{User?.email}</td>
+                <td className='flex  items-center'><img src={photoUrl} alt="user" className='mr-3 w-16 h-16 rounded-full'/> {User?.email}</td>
                 <td>{!role&&<button onClick={makeAdmin} className='btn btn-xs btn-primary bg-indigo-700'>Make Admin</button>}</td>
                 <td><button  onClick={()=>handleDeleteUser(User?.email)} className='btn btn-xs  btn-primary bg-indigo-700'>Remove user</button></td>
               </tr>

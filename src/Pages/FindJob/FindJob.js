@@ -32,7 +32,7 @@ const { register, formState: { errors }, handleSubmit,reset } = useForm();
 
  
 
-const {data: jobs,refetch,isLoading} = useQuery(['jobs',keyword], () => fetch(`https://quick-solution.vercel.app/findjob?keyword=${keyword}`)
+const {data: jobs,refetch,isLoading} = useQuery(['jobs',keyword], () => fetch(`https://quick-solution-server.up.railway.app/findjob?keyword=${keyword}`)
      .then(res=>res.json())
     
 )

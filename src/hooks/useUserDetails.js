@@ -6,7 +6,7 @@ const useUserDetails =user=>{
     useEffect(()=>{
         const email= user?.email;
         if(email){
-            fetch(`https://quick-solution.vercel.app/user/${email}`,{
+            fetch(`https://quick-solution-server.up.railway.app/user/${email}`,{
 
             method:'GET',
             headers:{

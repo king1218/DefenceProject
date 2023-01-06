@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 const AllReviews = () => {
     const navigate = useNavigate();
-    const {data:Reviews,isLoading,refetch}=useQuery('reviews',()=>fetch('https://quick-solution.vercel.app/reviews',
+    const {data:Reviews,isLoading,refetch}=useQuery('reviews',()=>fetch('https://quick-solution-server.up.railway.app/reviews',
     {
         method: 'GET',
         headers: {
@@ -24,7 +24,7 @@ const AllReviews = () => {
 
 
     const handleDelete = (id) => {
-        fetch(`https://quick-solution.vercel.app/reviews/${id}`, {
+        fetch(`https://quick-solution-server.up.railway.app/reviews/${id}`, {
             method: 'DELETE',
             headers: {
               'content-type':'appliction/json',
@@ -50,10 +50,10 @@ const AllReviews = () => {
 }
 
     return (
-        <div className="overflow-x-auto w-full">
+        <div className="overflow-x-auto w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-3">
             {
                 Reviews?.map(Review =>
-                    <div key={Review._id} className="card lg:max-w-lg bg-base-100 md:shadow-xl md:shadow-indigo-100 mx-auto m-3">
+                    <div key={Review._id} className="card lg:max-w-lg  md:shadow-xl md:shadow-indigo-100 mx-auto m-3">
                     <div className="card-body ">
                    
                     <p>{Review?.reviewtext}</p>

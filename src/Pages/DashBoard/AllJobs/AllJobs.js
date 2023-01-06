@@ -3,10 +3,15 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import ErrorPage from '../../ErrorPage/ErrorPage';
 import Loading from '../../Loading/Loading';
-import DeleteJobModal from '../MyJobs/DeleteJobModal';
+
+import {signOut } from 'firebase/auth';
+import auth from '../../../firebase.init';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const AllJobs = () => {
-    const {data:Jobs,isLoading,refetch,isFetching,error}=useQuery('users',()=>fetch('https://quick-solution.vercel.app/jobs',
+  const navigate = useNavigate();
+    const {data:Jobs,isLoading,refetch,isFetching,error}=useQuery('users',()=>fetch('https://quick-solution-server.up.railway.app/jobs',
     {
         method: 'GET',
         headers: {
@@ -15,6 +20,33 @@ const AllJobs = () => {
         }
     })
         .then(res=>res.json()));
+
+        const handleDelete = (Jobid) => {
+          fetch(`https://quick-solution-server.up.railway.app/deletejob/${Jobid}`, {
+              method: 'DELETE',
+              headers: {
+                'content-type':'appliction/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+          })
+              .then(res => 
+                {
+                  if(res.status === 401 || res.status===403){
+                      signOut(auth);
+                      navigate('/')
+                  }
+                  return res.json()
+              })
+              
+              .then(data => {
+                  
+                  if (data.deletedCount) {
+                      toast.success(`Your job is deleted`)
+                      refetch();
+                  }
+              })
+  }
+
 
     if(isLoading||isFetching){
         return <Loading></Loading>
@@ -63,11 +95,12 @@ if(error){
               <td>{Job?.Published_On}</td>
               <th>
                 
-                <label htmlFor="Delete-Job-Modal" className="btn btn-primary btn-xs">Delete</label>
+                {/* <label htmlFor="Delete-Job-Modal" className="btn btn-primary btn-xs">Delete</label> */}
+                <button onClick={()=>handleDelete(Job._id)}  className="btn btn-primary btn-xs">Delete</button>
              
                 
               </th>
-              <DeleteJobModal Job={Job} refetch={refetch}></DeleteJobModal>
+              {/* <DeleteJobModal Jobid={Job._id} refetch={refetch}></DeleteJobModal> */}
             </tr>
              
             )

@@ -12,7 +12,7 @@ import AppliedJobNotification from './AppliedJobNotification';
 const AppliedJobs = () => {
     const [user] =useAuthState(auth)
     const navigate = useNavigate();
-    const {data:AppliedJobs,isLoading,refetch,isFetching,error}=useQuery('Jobs',()=>fetch(`https://quick-solution.vercel.app/myApplied/${user?.email}`,
+    const {data:AppliedJobs,isLoading,refetch,isFetching,error}=useQuery('Jobs',()=>fetch(`https://quick-solution-server.up.railway.app/myApplied/${user?.email}`,
     {
         method: 'GET',
         headers: {
@@ -42,7 +42,7 @@ if(AppliedJobs?.length ===0){
  return <AppliedJobNotification></AppliedJobNotification>
 }
 const RemoveApply = (Jobid)=>{
-    fetch(`https://quick-solution.vercel.app/myApplied/${Jobid}`, {
+    fetch(`https://quick-solution-server.up.railway.app/myApplied/${Jobid}`, {
         method: 'DELETE',
         headers: {
           'content-type':'appliction/json',

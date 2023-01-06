@@ -19,14 +19,14 @@ const Dashbord = () => {
 
         <div className="drawer-content flex flex-col  rounded-r-2xl ">
 
-          <div className="btn-group mt-4 w-11/12 mx-auto lg:hidden">
+          <div className="btn-group mt-2 w-6/12 mx-auto lg:hidden">
               {/* <!-- Sidebar content here --> */}
             <Link className='btn btn-primary' to='/dashboard'>Profile</Link>
             <Link className='btn' to='/dashboard/appliedJobs'>Applies</Link>
             <Link className='btn' to='/dashboard/postedJobs'>Posts</Link>
             
           </div>
-          <div className="btn-group mt-1  w-11/12 mx-auto lg:hidden">
+          <div className="btn-group mt-1 mb-3 w-7/12 mx-auto lg:hidden">
           <Link className='btn' to='/dashboard/allUsers'>All Users</Link>
             <Link className='btn' to='/dashboard/allJobs'>All Jobs</Link>
             <Link className='btn' to='/dashboard/allReviews'>All Reviews</Link>
@@ -51,7 +51,7 @@ const Dashbord = () => {
                 <>
                 <li><Link to='/dashboard/allUsers'>All Users</Link></li>
                 <li><Link to='/dashboard/allJobs'>All Jobs</Link></li>
-                <li>  <Link  to='/dashboard/allReviews'>All Reviews</Link></li>
+                <li><Link  to='/dashboard/allReviews'>All Reviews</Link></li>
                 </>
             }
             </ul>

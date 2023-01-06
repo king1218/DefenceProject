@@ -5,7 +5,7 @@ import UserRaw from './UserRow';
 
 
 const AllUsers = () => {
-    const {data:Users,isLoading,refetch}=useQuery('users',()=>fetch('https://quick-solution.vercel.app/users',
+    const {data:Users,isLoading,refetch}=useQuery('users',()=>fetch('https://quick-solution-server.up.railway.app/users',
     {
         method: 'GET',
         headers: {
@@ -20,9 +20,9 @@ const AllUsers = () => {
     }
 
     return (
-        <div className='overflow-x-auto w-full '>
+        <div className='overflow-x-auto  '>
             <div className="">
-  <table className="table w-full">
+  <table className="table w-11/12 mx-auto">
     <thead>
       <tr>
         <th></th>

@@ -9,12 +9,12 @@ import Review from './Review';
 
 const Reviews = () => {
     const [user] = useAuthState(auth)
-    const {data:Reviews,isLoading,refetch,isFetching,error}=useQuery('users',()=>fetch('https://quick-solution.vercel.app/reviews',
+    const {data:Reviews,isLoading,refetch,isFetching,error}=useQuery('users',()=>fetch('https://quick-solution-server.up.railway.app/reviews',
     {
         method: 'GET',
         headers: {
-          'content-type':'appliction/json',
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+          'content-type':'appliction/json'
+            
         }
     })
         .then(res=>res.json()));
